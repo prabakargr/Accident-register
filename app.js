@@ -40,7 +40,6 @@ app.use('/swagger',express.static(path.join(process.env.PWD, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
-app.use(cors);
 
 app.use(function(req, res, next) {  
     res.header('Access-Control-Allow-Origin', req.headers.origin);

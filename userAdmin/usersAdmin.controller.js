@@ -11,7 +11,7 @@ var config = require('../config');
 app.set('superSecret', config.secret);
 
 var login=function(req,res){
-      
+      console.log(req.body)
 
     // find the user
     UserAdmin.findOne({
