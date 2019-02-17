@@ -12,4 +12,4 @@ var userAdminModel=new Schema({
 
 
 
-module.exports=mongoose.model("alluser",userAdminModel);
+module.exports=mongoose.model("adminuser",userAdminModel);

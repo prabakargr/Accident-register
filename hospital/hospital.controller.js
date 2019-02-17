@@ -62,6 +62,7 @@ var addHospital = function (req, res) {
 };
 
 var hospitalLogin=function(req,res){
+  console.log(req.body)
    // find the user
    hospitalModel.findOne({
     hospitalNumber: req.body.hospitalNumber
@@ -108,9 +109,23 @@ var hospitalLogin=function(req,res){
 
 }
 
+findHospitals=function(req,res){
+  var district=req.body.district;
+
+  hospitalModel.find({district},function(err,hospitals){
+    if(!err){
+      res.json({result:hospitals,message:"Success"}).status(200)
+    }else{
+      res.json({message:"No record"}).status(403)
+    }
+  })
+
+}
+
 
 
 module.exports={
     addHospital:addHospital,
-    hospitalLogin:hospitalLogin
+    hospitalLogin:hospitalLogin,
+    findHospitals:findHospitals
 }
