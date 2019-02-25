@@ -78,6 +78,8 @@ var hospitalLogin=function(req,res){
       // check if password matches
       if (hospital.password != req.body.password) {
         res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+      }else if(hospital.isActive != true){
+        res.json({ success: false, message: 'Authentication failed. Hospital Not in Active.' });
       } else {
 
         // if user is found and password is right
@@ -122,10 +124,166 @@ findHospitals=function(req,res){
 
 }
 
+findHospitalList=function(req,res){
+  
+  var token = req.headers['x-access-token'];
+  console.log(req.body)
+
+  if (token) {
+
+      // verifies secret and checks exp
+      jwt.verify(token, app.get('superSecret'), function (err, decoded) {
+          if (err) {
+              return res.json({ success: false, message: 'Failed to authenticate token.' });
+          } else {
+              // if everything is good, save to request for use in other routes
+              // req.decoded = decoded;    
+              // next();
+
+              var district=req.body.district;
+              var hospitalDirectorate=req.body.hospitalDirectorate
+              hospitalModel.find({district,hospitalDirectorate},function (err,result) {
+                  if (err) {
+                      res.send('error');
+                  } else {
+                      const payload = {
+                          body:req.body,  
+                          
+                        };
+                        console.log(payload);
+                            var token = jwt.sign(payload, app.get('superSecret'),{
+                            expiresIn:1440
+                           
+                            });
+                      res.send({
+                        result:result,
+                          token:token,
+                          message:"Success"
+                      })
+                      
+                  }
+              });
+          }
+      });
+
+  } else {
+
+      // if there is no token
+      // return an error
+      return res.status(403).send({
+          success: false,
+          message: 'No token provided.'
+      });
+
+
+  };
+}
+
+getAllHospitals=function(req,res){
+  
+  var token = req.headers['x-access-token'];
+  console.log(req.body)
+
+  if (token) {
+
+      // verifies secret and checks exp
+      jwt.verify(token, app.get('superSecret'), function (err, decoded) {
+          if (err) {
+              return res.json({ success: false, message: 'Failed to authenticate token.' });
+          } else {
+              // if everything is good, save to request for use in other routes
+              // req.decoded = decoded;    
+              // next();
+
+              hospitalModel.find(function (err,result) {
+                  if (err) {
+                      res.send('error');
+                  } else {
+                      res.send({
+                         result:result,
+                        message:"Success"
+                      })
+                      
+                  }
+              });
+          }
+      });
+
+  } else {
+
+      // if there is no token
+      // return an error
+      return res.status(403).send({
+          success: false,
+          message: 'No token provided.'
+      });
+
+
+  };
+}
+
+activatAndDeactivate=function(req,res){
+  
+  var token = req.headers['x-access-token'];
+  console.log(req.body)
+
+  if (token) {
+
+      // verifies secret and checks exp
+      jwt.verify(token, app.get('superSecret'), function (err, decoded) {
+          if (err) {
+              return res.json({ success: false, message: 'Failed to authenticate token.' });
+          } else {
+              // if everything is good, save to request for use in other routes
+              // req.decoded = decoded;    
+              // next();
+
+              var _id=req.body._id;
+              var isActive=req.body.isActive
+              hospitalModel.findByIdAndUpdate({_id},{isActive},function (err,result) {
+                  if (err) {
+                      res.send('error');
+                  } else {
+                      const payload = {
+                          body:req.body,  
+                          
+                        };
+                        console.log(payload);
+                            var token = jwt.sign(payload, app.get('superSecret'),{
+                            expiresIn:1440
+                           
+                            });
+                      res.send({
+                        result:result,
+                          token:token,
+                          message:"Success"
+                      })
+                      
+                  }
+              });
+          }
+      });
+
+  } else {
+
+      // if there is no token
+      // return an error
+      return res.status(403).send({
+          success: false,
+          message: 'No token provided.'
+      });
+
+
+  };
+}
+
 
 
 module.exports={
     addHospital:addHospital,
     hospitalLogin:hospitalLogin,
-    findHospitals:findHospitals
+    findHospitals:findHospitals,
+    findHospitalList:findHospitalList,
+    getAllHospitals:getAllHospitals,
+   activatAndDeactivate:activatAndDeactivate    
 }

@@ -39,7 +39,7 @@ var login=function(req,res){
         };
         console.log(payload);
             var token = jwt.sign(payload, app.get('superSecret'),{
-            expiresIn:1440
+            // expiresIn:1440
            
             });
             console.log(token);

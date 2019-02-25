@@ -10,7 +10,8 @@ var hospitalModel=new Schema({
     hospitalType:String,
     hospitalDirectorate:String,
     hospitalName:String,
-    password:String
+    password:String,
+    isActive:Boolean
 
 })
 

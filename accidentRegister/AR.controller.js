@@ -1,60 +1,146 @@
-var arModel=require('./AR.module');
+var ArModel=require('./AR.module');
+
+var express     = require('express');
+
+var app         = express();
+
+var jwt    = require('jsonwebtoken');
+
+var config = require('../config');
+
+app.set('superSecret', config.secret);
 
 var addAccidentRegister=function (req, res) {
-    console.log(req.body)
-    var token = req.headers['x-access-token'];
-
-
-
-    if (token) {
-
-        // verifies secret and checks exp
-        jwt.verify(token, app.get('superSecret'), function (err, decoded) {
-            if (err) {
-                return res.json({ success: false, message: 'Failed to authenticate token.' });
-            } else {
-                // if everything is good, save to request for use in other routes
-                // req.decoded = decoded;    
-                // next();
-                var arModel = new arModel(req.body);
+    var arModel = new ArModel(req.body);
                 arModel.save(function (err,result) {
-                    if (err) {
-                        res.send('error');
-                    } else {
-                        const payload = {
-                            body:req.body,  
-                            
-                          };
-                          console.log(payload);
-                              var token = jwt.sign(payload, app.get('superSecret'),{
-                              expiresIn:1440
-                             
-                              });
-                        res.send({
-                            res:result,
-                            token:token,
-                            message:"Created successfully"
-                        })
-                        
-                    }
-                });
+                    if (err) res.send('error');
+                    else res.json({result:result,message:"Success"})
+                })
             }
-        });
-
-    } else {
-
-        // if there is no token
-        // return an error
-        return res.status(403).send({
-            success: false,
-            message: 'No token provided.'
-        });
 
 
-    };
+            var findArLists=function (req, res) {
+                console.log(req.body)
+                var token = req.headers['x-access-token'];
+            
+            
+            
+                if (token) {
+            
+                    // verifies secret and checks exp
+                    jwt.verify(token, app.get('superSecret'), function (err, decoded) {
+                        if (err) {
+                            return res.json({ success: false, message: 'Failed to authenticate token.' });
+                        } else {
+                            // if everything is good, save to request for use in other routes
+                            // req.decoded = decoded;    
+                            // next();={}
+                            var body={
+                                admissionDate :req.body.admissionDate,
+                            } 
+                           var currentUserID=req.body.currentUserID
 
-};
+                            let arLists=[];
+
+                            // var admissionDate =req.body.admissionDate
+                            // var currentUserID=req.body.currentUserID 
+                            ArModel.find({currentUserID},function (err,lists) {
+                               if(lists.length){
+                                   console.log(lists);
+                                 for(let i=0;i<lists.length;i++){
+                                     console.log(lists[0].admissionDetails.admissionDate)
+                                     if(lists[i].admissionDetails.admissionDate==body.admissionDate) {
+                                         arLists.push(lists[i]);
+                                        console.log(arLists)
+                                        //  return res.json({
+                                        //      result:arLists,
+                                        //      message:'Success',
+                                        //  })
+                                     }
+                                 }
+                                 return res.json({
+                                    result:arLists,
+                                    message:'Success',
+                                })
+                                   
+                               }else{
+                                   return res.json({
+                                       message:'No records'
+                                   })
+                               }
+                            });
+                        }
+                    });
+            
+                } else {
+            
+                    // if there is no token
+                    // return an error
+                    return res.status(403).send({
+                        success: false,
+                        message: 'No token provided.'
+                    });
+            
+            
+                };
+            
+            };
+// var addAccidentRegister=function (req, res) {
+//     console.log(req.body)
+//     var token = req.headers['x-access-token'];
+
+
+
+//     if (token) {
+
+//         // verifies secret and checks exp
+//         jwt.verify(token, app.get('superSecret'), function (err, decoded) {
+//             if (err) {
+//                 return res.json({ success: false, message: 'Failed to authenticate token.' });
+//             } else {
+//                 // if everything is good, save to request for use in other routes
+//                 // req.decoded = decoded;    
+//                 // next();
+//                 var arModel = new arModel(req.body);
+//                 arModel.save(function (err,result) {
+//                     if (err) {
+//                         res.send('error');
+//                     } else {
+//                         const payload = {
+//                             body:req.body,  
+                            
+//                           };
+//                           console.log(payload);
+//                               var token = jwt.sign(payload, app.get('superSecret'),{
+//                               expiresIn:1440
+                             
+//                               });
+//                         res.send({
+//                             res:result,
+//                             token:token,
+//                             message:"Created successfully"
+//                         })
+                        
+//                     }
+//                 });
+//             }
+//         });
+
+//     } else {
+
+//         // if there is no token
+//         // return an error
+//         return res.status(403).send({
+//             success: false,
+//             message: 'No token provided.'
+//         });
+
+
+//     };
+
+// };
 
 module.exports={
-    addAccidentRegister:addAccidentRegister
+    addAccidentRegister:addAccidentRegister,
+    findArLists:findArLists
 }
