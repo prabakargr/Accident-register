@@ -4,6 +4,11 @@ var Schema=mongoose.Schema;
 
 var arModel=new Schema({
     currentUserID:String,
+    arNumber: String,
+    completed: {
+        type: Boolean,
+        default: false
+    },
     admissionDetails:{
         opNumber:String,
         ipNumber:String,
