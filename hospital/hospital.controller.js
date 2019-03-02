@@ -8,108 +8,27 @@ var jwt    = require('jsonwebtoken');
 
 var config = require('../config');
 
+var tokenValidate=require('../tokenValidate/tokenValidation')
+
+var status=require('../statusResponse/status')
+
 app.set('superSecret', config.secret);
 
 var addHospital = function (req, res) {
-    var token = req.headers['x-access-token'];
-
-    if (token) {
-
-        // verifies secret and checks exp
-        jwt.verify(token, app.get('superSecret'), function (err, decoded) {
-            if (err) {
-                return res.json({ success: false, message: 'Failed to authenticate token.' });
-            } else {
-                // if everything is good, save to request for use in other routes
-                // req.decoded = decoded;    
-                // next();
                 var hospital = new hospitalModel(req.body);
                 hospital.save(function (err,result) {
                     if (err) {
-                        res.send('error');
+                        res.send(err);
                     } else {
-                        const payload = {
-                            body:req.body,  
-                            
-                          };
-                          console.log(payload);
-                              var token = jwt.sign(payload, app.get('superSecret'),{
-                              expiresIn:1440
-                             
-                              });
-                        res.send({
-                            res:result,
-                            token:token
-                        })
+                        let responce=status.statusCode.createSuccess
+                        responce.data=result
+                        res.json(responce)
                         
                     }
                 });
             }
-        });
-
-    } else {
-
-        // if there is no token
-        // return an error
-        return res.status(403).send({
-            success: false,
-            message: 'No token provided.'
-        });
 
 
-    };
-
-};
-
-var hospitalLogin=function(req,res){
-  console.log(req.body)
-   // find the user
-   hospitalModel.findOne({
-    hospitalNumber: req.body.hospitalNumber
-  },
-   function(err, hospital) {
-    
-    if (err) throw err;
-
-    if (!hospital) {
-      res.json({ success: false, message: 'Authentication failed. Hospital not found.' });
-    } else if (hospital) {
-
-      // check if password matches
-      if (hospital.password != req.body.password) {
-        res.json({ success: false, message: 'Authentication failed. Wrong password.' });
-      }else if(hospital.isActive != true){
-        res.json({ success: false, message: 'Authentication failed. Hospital Not in Active.' });
-      } else {
-
-        // if user is found and password is right
-        // create a token with only our given payload
-    // we don't want to pass in the entire user since that has the password
-    const payload = {
-      hospitalNumber:hospital.hospitalNumber,  
-      
-    };
-    console.log(payload);
-        var token = jwt.sign(payload, app.get('superSecret'),{
-        expiresIn:1440
-       
-        });
-        console.log(token);
-        // return the information including token as JSON
-        res.json({
-          success: true,
-          message: 'Enjoy your token!',
-          token: token,
-          res:hospital
-        }).status(200);
-      }   
-
-    }
-
-  });
-
-
-}
 
 findHospitals=function(req,res){
   var district=req.body.district;
@@ -125,75 +44,22 @@ findHospitals=function(req,res){
 }
 
 findHospitalList=function(req,res){
-  
-  var token = req.headers['x-access-token'];
-  console.log(req.body)
-
-  if (token) {
-
-      // verifies secret and checks exp
-      jwt.verify(token, app.get('superSecret'), function (err, decoded) {
-          if (err) {
-              return res.json({ success: false, message: 'Failed to authenticate token.' });
-          } else {
-              // if everything is good, save to request for use in other routes
-              // req.decoded = decoded;    
-              // next();
-
               var district=req.body.district;
               var hospitalDirectorate=req.body.hospitalDirectorate
               hospitalModel.find({district,hospitalDirectorate},function (err,result) {
                   if (err) {
-                      res.send('error');
+                      res.send(err);
                   } else {
-                      const payload = {
-                          body:req.body,  
-                          
-                        };
-                        console.log(payload);
-                            var token = jwt.sign(payload, app.get('superSecret'),{
-                            expiresIn:1440
-                           
-                            });
-                      res.send({
-                        result:result,
-                          token:token,
-                          message:"Success"
-                      })
+                      let responce=status.statusCode.getSuccess
+                      responce.data=result
+                      res.send(responce)
                       
                   }
               });
           }
-      });
 
-  } else {
-
-      // if there is no token
-      // return an error
-      return res.status(403).send({
-          success: false,
-          message: 'No token provided.'
-      });
-
-
-  };
-}
 
 getAllHospitals=function(req,res){
-  
-  var token = req.headers['x-access-token'];
-  console.log(req.body)
-
-  if (token) {
-
-      // verifies secret and checks exp
-      jwt.verify(token, app.get('superSecret'), function (err, decoded) {
-          if (err) {
-              return res.json({ success: false, message: 'Failed to authenticate token.' });
-          } else {
-              // if everything is good, save to request for use in other routes
-              // req.decoded = decoded;    
-              // next();
 
               hospitalModel.find(function (err,result) {
                   if (err) {
@@ -207,83 +73,29 @@ getAllHospitals=function(req,res){
                   }
               });
           }
-      });
+ 
 
-  } else {
-
-      // if there is no token
-      // return an error
-      return res.status(403).send({
-          success: false,
-          message: 'No token provided.'
-      });
-
-
-  };
-}
 
 activatAndDeactivate=function(req,res){
-  
-  var token = req.headers['x-access-token'];
-  console.log(req.body)
-
-  if (token) {
-
-      // verifies secret and checks exp
-      jwt.verify(token, app.get('superSecret'), function (err, decoded) {
-          if (err) {
-              return res.json({ success: false, message: 'Failed to authenticate token.' });
-          } else {
-              // if everything is good, save to request for use in other routes
-              // req.decoded = decoded;    
-              // next();
-
               var _id=req.body._id;
               var isActive=req.body.isActive
               hospitalModel.findByIdAndUpdate({_id},{isActive},function (err,result) {
                   if (err) {
-                      res.send('error');
+                      res.send(err);
                   } else {
-                      const payload = {
-                          body:req.body,  
-                          
-                        };
-                        console.log(payload);
-                            var token = jwt.sign(payload, app.get('superSecret'),{
-                            expiresIn:1440
-                           
-                            });
-                      res.send({
-                        result:result,
-                          token:token,
-                          message:"Success"
-                      })
+                      let responce=status.statusCode.updateSuccess;
+                      res.send(responce)
                       
                   }
               });
           }
-      });
-
-  } else {
-
-      // if there is no token
-      // return an error
-      return res.status(403).send({
-          success: false,
-          message: 'No token provided.'
-      });
-
-
-  };
-}
 
 
 
 module.exports={
     addHospital:addHospital,
-    hospitalLogin:hospitalLogin,
     findHospitals:findHospitals,
     findHospitalList:findHospitalList,
     getAllHospitals:getAllHospitals,
-   activatAndDeactivate:activatAndDeactivate    
+    activatAndDeactivate:activatAndDeactivate    
 }

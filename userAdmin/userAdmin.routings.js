@@ -4,7 +4,9 @@ var usersController=require('./usersAdmin.controller');
 
 var usersAdminRouting=express.Router();
 
-usersAdminRouting.route('/login').post(usersController.login);
+var tokenGenerate=require('../tokenValidate/tokenGenerate')
+
+usersAdminRouting.route('/login').post(tokenGenerate.adminlogin);
 
 
 module.exports=usersAdminRouting;    
