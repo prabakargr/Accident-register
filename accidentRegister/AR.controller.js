@@ -67,10 +67,8 @@ var addAccidentRegister = function (req, res) {
                 if (err) {
                     res.send(err)
                 } else {
-                    res.send({
-                        res: result,
-                        message: "Created successfully"
-                    })
+                    let response=status.statusCode.entrySuccess
+                    res.send(response)
                 }
             })
 
