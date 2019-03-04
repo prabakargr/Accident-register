@@ -34,10 +34,10 @@ findHospitals=function(req,res){
   var district=req.body.district;
 
   hospitalModel.find({district},function(err,hospitals){
-    if(!err){
-      res.json({result:hospitals,message:"Success"}).status(200)
+    if(hospitals.length!=0){
+      res.json({data:hospitals,status:"Success",code:200})
     }else{
-      res.json({message:"No record"}).status(403)
+      res.json({status:"Hospitals Not Found",code:403})
     }
   })
 
