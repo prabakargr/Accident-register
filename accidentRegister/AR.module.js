@@ -13,7 +13,6 @@ var arModel=new Schema({
         opNumber:String,
         ipNumber:String,
         mlcNumber:String,
-        pinNumber:String,
         admissionDate:String,
         admissionTime:String,
         personBrought:String,
@@ -30,8 +29,8 @@ var arModel=new Schema({
         identyMark2:String,
         location2:String,
         doorNoStreet:String,
-        city:String,
-        district:String, 
+        phoneNumber:String,
+        cityDistrict:String, 
     },
     doctorDetailsAndiInitialExamination:{
         doctorName:String,
