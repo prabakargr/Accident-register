@@ -49,6 +49,7 @@ var findArLists = function (req, res) {
 }
 
 var addAccidentRegister = function (req, res) {
+    console.log(ArModel)
     let query = {
         currentUserID: req.body.currentUserID,
         arNumber: req.body.arNumber

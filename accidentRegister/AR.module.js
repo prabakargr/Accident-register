@@ -36,7 +36,8 @@ var arModel=new Schema({
         doctorName:String,
         doctorRegistrationNumber:String,
         pulse:String,
-        bloodPressure:String,
+        bloodPressureHigh:String,
+        bloodPressureLow:String,
         respirationRate:String,
         oxygenSaturation:String,
         pupillaryReaction:String,
@@ -47,7 +48,7 @@ var arModel=new Schema({
         landmark:String,
         accidentDate:String,
         accidentTime:String,
-        accidentType:String,
+        accidentType:[],
         patientPosition:String,
         vechileType:String,
         patientType:String
