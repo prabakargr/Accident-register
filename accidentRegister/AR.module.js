@@ -21,7 +21,7 @@ var arModel=new Schema({
     },
     patientDetails:{
         name:String,
-        age:Number,
+        age:String,
         gender:String,
         occupation:String,
         identyMark1:String,

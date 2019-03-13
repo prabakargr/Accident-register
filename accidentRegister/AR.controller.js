@@ -26,7 +26,7 @@ var findArLists = function (req, res) {
     let arLists = [];
 
     ArModel.find({ currentUserID }, function (err, lists) {
-        if (lists.length !== 0) {
+        if (lists && lists.length !== 0) {
             console.log(lists);
             for (let i = 0; i < lists.length; i++) {
                 console.log(lists[0].admissionDetails.admissionDate)
@@ -49,33 +49,45 @@ var findArLists = function (req, res) {
 }
 
 var addAccidentRegister = function (req, res) {
-    console.log(ArModel)
     let query = {
         currentUserID: req.body.currentUserID,
         arNumber: req.body.arNumber
     }
-    ArModel.findOne(query, function (err, result) {
-        if (err) {
-            res.send(err);
-        } else {
-            if (result && result.arNumber) {
-                result = _.extend(result, req.body)
-            } else {
-                result = new ArModel(req.body)
-            }
-
-            result.save((err, doc) => {
-                if (err) {
-                    res.send(err)
-                } else {
-                    let response=status.statusCode.entrySuccess
-                    res.send(response)
-                }
+    if(Array.isArray(req.body)){
+        var reqArModel=req.body
+       reqArModel.forEach(element => {
+            const arModel = new ArModel(element);
+             arModel.save(function(err,result){
+                if(err) return status.statusCode.entryFailure
             })
-
-
-        }
     });
+    let response=status.statusCode.entrySuccess
+    res.send(response) 
+
+    }else{
+        ArModel.findOne(query, function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                if (result && result.arNumber) {
+                    result = _.extend(result, req.body)
+                } else {
+                    result = new ArModel(req.body)
+                }
+    
+                result.save((err, doc) => {
+                    if (err) {
+                        res.send(err)
+                    } else {
+                        let response=status.statusCode.entrySuccess
+                        res.send(response)
+                    }
+                })
+    
+    
+            }
+        });
+    }
 }
 
 module.exports = {
