@@ -75,6 +75,14 @@ statusCode: {
         arEntrySuccess:{
             status:"Ar Entry Created",
             code:200
+        },
+        arListGetSuccess:{
+            status:"Getting AR List Success",
+            code:200
+        },
+        arListNoteFound:{
+            status:"AR Lists Not Found",
+            code:201
         }
     }
 }

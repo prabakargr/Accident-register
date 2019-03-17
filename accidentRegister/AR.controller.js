@@ -38,12 +38,12 @@ var findArLists = function (req, res) {
             if (arLists.length === 0) {
                 return res.json(status.statusCode.recordNotFound)
             }
-            let Response=status.statusCode.getSuccess;
+            let Response=status.statusCode.arListGetSuccess;
             Response.data=arLists
             return res.json(Response)
 
         } else {
-            return res.json(status.statusCode.recordNotFound)
+            return res.json(status.statusCode.arListNoteFound)
         }
     });
 }
