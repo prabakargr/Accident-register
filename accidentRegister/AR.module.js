@@ -9,6 +9,14 @@ var arModel=new Schema({
         type: Boolean,
         default: false
     },
+    hospitalDetails:{
+        hospitalId:String,
+        hospitalNumber:String,
+        district:String,
+        hospitalType:String,
+        hospitalDirectorate:String,
+        hospitalName:String,
+    },
     admissionDetails:{
         opNumber:String,
         ipNumber:String,
@@ -41,7 +49,8 @@ var arModel=new Schema({
         respirationRate:String,
         oxygenSaturation:String,
         pupillaryReaction:String,
-        injuryType:String
+        injuryType:String,
+        doctorDescription:String
     },
     accidentDetails:{
         location:String,

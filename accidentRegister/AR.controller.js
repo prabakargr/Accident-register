@@ -65,21 +65,30 @@ var addAccidentRegister = function (req, res) {
     res.send(response) 
 
     }else{
+        console.log('entered')
         ArModel.findOne(query, function (err, result) {
             if (err) {
                 res.send(err);
             } else {
                 if (result && result.arNumber) {
+                    console.log('entered')
                     result = _.extend(result, req.body)
                 } else {
+                    console.log('newentered')
                     result = new ArModel(req.body)
                 }
-    
+                console.log(result)
                 result.save((err, doc) => {
-                    if (err) {
-                        res.send(err)
-                    } else {
-                        let response=status.statusCode.entrySuccess
+                    if(doc){
+                        if(doc.completed==false){
+                         let response=status.statusCode.arInitialEntrySuccess
+                          res.send(response)
+                        }else if(doc.completed==true){
+                         let  response = status.statusCode.arEntrySuccess
+                           res.send(response)
+                        }
+                    }else {
+                       let response = status.statusCode.createFailed
                         res.send(response)
                     }
                 })

@@ -67,6 +67,14 @@ statusCode: {
         recordNotFound:{
             status:'No records',
             code:201
+        },
+        arInitialEntrySuccess:{
+            status:"Ar Initial Entry Success",
+            code:200
+        },
+        arEntrySuccess:{
+            status:"Ar Entry Created",
+            code:200
         }
     }
 }
