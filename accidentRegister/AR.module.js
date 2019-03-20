@@ -16,6 +16,7 @@ var arModel=new Schema({
         hospitalType:String,
         hospitalDirectorate:String,
         hospitalName:String,
+
     },
     admissionDetails:{
         opNumber:String,
@@ -25,6 +26,7 @@ var arModel=new Schema({
         admissionTime:String,
         personBrought:String,
         isIformedToPolice:String,
+        toWhom:String,
         affidavit:String
     },
     patientDetails:{
