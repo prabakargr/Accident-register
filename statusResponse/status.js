@@ -69,7 +69,7 @@ statusCode: {
             code:201
         },
         arInitialEntrySuccess:{
-            status:"AR Initial Entry Success",
+            // status:"AR Initial Entry Success",
             code:200
         },
         arEntrySuccess:{

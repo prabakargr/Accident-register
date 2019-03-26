@@ -78,12 +78,18 @@ var addAccidentRegister = function (req, res) {
                     result = new ArModel(req.body)
                 }
                 console.log(result)
-                result.save((err, doc) => {
-                    if(err){
-                        let response = status.statusCode.createFailed
-                        res.send(response)
+                result.save((err, doc,next) => {
+                    if(doc){
+
+                        if(doc.completed==false){
+                            let response=status.statusCode.arInitialEntrySuccess
+                             res.send(response)
+                           }else if(doc.completed==true){
+                            let  response = status.statusCode.arEntrySuccess
+                              res.send(response)
+                           }
                     }else {
-                        let  response = status.statusCode.arEntrySuccess
+                        let response = status.statusCode.createFailed
                         res.send(response)
                     }
                 })
@@ -99,11 +105,3 @@ module.exports = {
     findArLists: findArLists
 }
 
-
-if(doc.completed==false){
-    let response=status.statusCode.arInitialEntrySuccess
-     res.send(response)
-   }else if(doc.completed==true){
-    let  response = status.statusCode.arEntrySuccess
-      res.send(response)
-   }
