@@ -36,8 +36,8 @@ process.env.PWD = process.cwd();
 
 //html view
 
-// var path = require("path");
-// app.use(express.static(path.resolve(__dirname, 'templates')));
+var path = require("path");
+app.use(express.static(path.resolve(__dirname, 'templates')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
