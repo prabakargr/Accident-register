@@ -18,10 +18,11 @@
   }
 
   td {
-    max-width: 19.5rem;
-    min-width: 19.5rem;
+    max-width: 25rem;
   }
-  table,td{
+
+  table,
+  td {
     padding: 0.25rem !important
   }
 </style>
@@ -32,10 +33,10 @@
 
     <div style="padding:0 10%">
       <table class="table table-responsive" style="max-width:80%">
-        <tr class="border">
-          <td colspan="2" class="class"><b>ACCIDENT REGISTER FORM</b></td>
-        </tr>
         <tbody class="border">
+          <tr class="border">
+            <td colspan="2" class="class"><b>ACCIDENT REGISTER FORM</b></td>
+          </tr>
           <tr>
             <td><b>Hospital Id : </b>{{printData.hospitalDetails.hospitalId}}</td>
             <td><b>Hospital Type :</b> {{printData.hospitalDetails.hospitalType}}</td>
@@ -148,9 +149,7 @@
             <td colspan="2" class="border"><b>Doctor Description:</b>
               {{printData.doctorDetailsAndiInitialExamination.doctorDescription}}</td>
           </tr>
-          <tr>
-            <td colspan="2" class="border class"><b>RTA DETAILS</b></td>
-          </tr>
+
           <tr>
             <td class="border"><b>Patient Position : </b>{{printData.accidentDetails.patientPosition}}</td>
             <td class="border"> <b>Vechile Type :</b> {{printData.accidentDetails.vechileType}} </td>
@@ -158,9 +157,6 @@
           <tr>
             <td colspan="2" class="border"><b>Patient Type : </b>{{printData.accidentDetails.patientType}}</td>
           </tr>
-        </tbody>
-        <tbody id="arBody">
-
         </tbody>
       </table>
     </div>
