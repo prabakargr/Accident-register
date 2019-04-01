@@ -7,8 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="toPrint" style="padding: 2rem 17.3rem">
-      <table style="width: 800px;border: 2px solid black; border-collapse: collapse;">
+    <div id="toPrint" style="padding: 2rem 0.25rem">
+      <table style="width: 770px;border: 2px solid black; border-collapse: collapse;">
         <tbody style="border: 2px solid black; border-collapse: collapse; ">
           <tr style="text-align: left; border: 2px solid black; border-collapse: collapse; ">
             <td colspan="2"
@@ -46,15 +46,10 @@
               {{printData.admissionDetails.admissionDate}}/{{printData.admissionDetails.admissionTime}}</td>
           </tr>
           <tr style="border: 2px solid black; border-collapse: collapse;">
-                <td style="border: 2px solid black; border-collapse: collapse; padding: 5px"><b>:</b> 20:33</td>
-                <td style="border: 2px solid black; border-collapse: collapse; padding: 5px "><b>:</b> Nothing</td>
-              </tr>
-          <tr style="border: 2px solid black; border-collapse: collapse;">
             <td style="border: 2px solid black; border-collapse: collapse; padding: 5px"><b>Informed to the Police? :</b>
               {{printData.admissionDetails.isIformedToPolice}}
             </td>
             <td *ngIf="printData.admissionDetails.toWhom" style="border: 2px solid black; border-collapse: collapse; padding: 5px"><b>To Whom:</b>{{printData.admissionDetails.toWhom}}</td>
-            <td *ngIf="!printData.admissionDetails.toWhom" style="border: 2px solid black; border-collapse: collapse; padding: 5px"><b>To Whom:</b>No </td>
           </tr>
           <tr style="border: 2px solid black; border-collapse: collapse;">
             <td colspan="2" style="border: 2px solid black; border-collapse: collapse; padding: 5px">
