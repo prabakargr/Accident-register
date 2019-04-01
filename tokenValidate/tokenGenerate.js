@@ -1,7 +1,7 @@
 
-var hospitalModel = require('../hospital/hospital.module');
+var hospitalModel = require('../hospital/hospital.model');
 
-var UserAdmin=require('../userAdmin/userAdmin.module')
+var UserAdmin = require('../userAdmin/userAdmin.model')
 
 var express = require('express');
 
@@ -11,7 +11,7 @@ var jwt = require('jsonwebtoken');
 
 var config = require('../config');
 
-var status =require('../statusResponse/status')
+var status = require('../statusResponse/status')
 
 app.set('superSecret', config.secret);
 
@@ -19,49 +19,47 @@ app.set('superSecret', config.secret);
 // Hospital Login
 
 var hospitalLogin = function (req, res) {
-  if(!req.body.hospitalNumber || !req.body.password){
+  if (!req.body.hospitalNumber || !req.body.password) {
 
     res.json(status.statusCode.missingParameters)
-  }else{
-    
-    console.log(req.body)
+  } else {
+
     // find the user
     hospitalModel.findOne({
-        hospitalNumber: req.body.hospitalNumber
+      hospitalNumber: req.body.hospitalNumber
     },
-        function (err, hospital) {
+      function (err, hospital) {
 
-            if (err) throw err;
+        if (err) throw err;
 
-            if (!hospital) {
-                res.json(status.statusCode.userNotFound);
-            } else if (hospital) {
+        if (!hospital) {
+          res.json(status.statusCode.userNotFound);
+        } else if (hospital) {
 
-                // check if password matches
-                if (hospital.password != req.body.password) {
-                    res.json(status.statusCode.passwordWrong);
-                } else if (hospital.isActive != true) {
-                    res.json(status.statusCode.hospitalStatus);
-                } else {
+          // check if password matches
+          if (hospital.password != req.body.password) {
+            res.json(status.statusCode.passwordWrong);
+          } else if (hospital.isActive != true) {
+            res.json(status.statusCode.hospitalStatus);
+          } else {
 
-                    const payload = {
-                        hospitalNumber: hospital.hospitalNumber,
+            const payload = {
+              hospitalNumber: hospital.hospitalNumber,
 
-                    };
-                    console.log(payload);
-                    var token = jwt.sign(payload, app.get('superSecret'), {
-                        // expiresIn:1440
+            };
+            var token = jwt.sign(payload, app.get('superSecret'), {
+              // expiresIn:1440
 
-                    });
-                    responce=status.statusCode.loginSuccess
-                    responce.data=hospital
-                    responce.token=token
-                    res.json(responce)
-                }
+            });
+            responce = status.statusCode.loginSuccess
+            responce.data = hospital
+            responce.token = token
+            res.json(responce)
+          }
 
-            }
+        }
 
-        });
+      });
   }
 
 
@@ -71,51 +69,48 @@ var hospitalLogin = function (req, res) {
 //Admin Login
 
 
-var adminlogin = function(req,res){
-  if(!req.body.username || !req.body.password){
+var adminlogin = function (req, res) {
+  if (!req.body.username || !req.body.password) {
     res.json(status.statusCode.missingParameters)
-  }else{
-    console.log(req.body)
+  } else {
 
     // find the user
     UserAdmin.findOne({
-        username: req.body.username
-      },
-       function(err, user) {
-        
+      username: req.body.username
+    },
+      function (err, user) {
+
         if (err) throw err;
-    
+
         if (!user) {
           res.json(status.statusCode.userNotFound);
         } else if (user) {
-    
+
           // check if password matches
           if (user.password != req.body.password) {
             res.json(status.statusCode.passwordWrong);
           } else {
-          const payload = {
-          username:user.username,  
-          
-        };
-        console.log(payload);
-            var token = jwt.sign(payload, app.get('superSecret'),{
-            // expiresIn:1440
-           
+            const payload = {
+              username: user.username,
+
+            };
+            var token = jwt.sign(payload, app.get('superSecret'), {
+              // expiresIn:1440
+
             });
-            console.log(token);
-            let responce=status.statusCode.loginSuccess
-            responce.token=token
-            responce.data=user
+            let responce = status.statusCode.loginSuccess
+            responce.token = token
+            responce.data = user
             res.json(responce)
-          }   
-    
+          }
+
         }
-    
+
       });
   }
 }
 
 module.exports = {
-    hospitalLogin: hospitalLogin,
-    adminlogin:adminlogin
+  hospitalLogin: hospitalLogin,
+  adminlogin: adminlogin
 }

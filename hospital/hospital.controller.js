@@ -1,4 +1,4 @@
-var hospitalModel=require('./hospital.module');
+var hospitalModel=require('./hospital.model');
 
 var express     = require('express');
 

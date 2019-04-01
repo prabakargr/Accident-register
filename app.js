@@ -2,8 +2,6 @@ var express=require('express');
 
 var mongoose=require('mongoose');
 
-var path = require("path");
-
 var bodyParser=require('body-parser');
 
 var jwt = require('jsonwebtoken');
@@ -18,11 +16,14 @@ var usersAdminRouting = require('./userAdmin/userAdmin.routings');
 
 var hospitalRouting=require('./hospital/hospital.routing');
 
-var arRouting=require('./accidentRegister/AR.routing')
+var arRouting=require('./accidentRegister/AR.routing');
+
+var pdfDownload=require('./pdf/routing')
 
 var config = require('./config');
 
 var app=express();
+
 
 app.set('superSecret', config.secret);
 
@@ -33,10 +34,10 @@ app.use(function (req, res, next) {
 
 process.env.PWD = process.cwd();
 
-// app.set('views', path.join(process.env.PWD, 'public'));
+//html view
 
-// app.use('/swagger',express.static(path.join(process.env.PWD, 'public')));
-
+// var path = require("path");
+// app.use(express.static(path.resolve(__dirname, 'templates')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -51,8 +52,10 @@ app.use(function(req, res, next) {
 app.use('/api/v1/adminUsers',usersAdminRouting);
 app.use('/api/v1/hospitals',hospitalRouting);
 app.use('/api/v1/accidentRegisters',arRouting);
+app.use('/api/v1/arDownloads',pdfDownload);
 
 
-var port=process.env.PORT || (4000);
 
-app.listen(port, () => console.log(`Running on localhost:4000`));
+var port=process.env.PORT || (5000);
+
+app.listen(port, () => console.log(`Running on localhost:5000`));

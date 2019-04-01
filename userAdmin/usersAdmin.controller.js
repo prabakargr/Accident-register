@@ -1,4 +1,4 @@
-var UserAdmin=require('./userAdmin.module');
+var UserAdmin=require('./userAdmin.model');
 
 var express     = require('express');
 
