@@ -28,7 +28,7 @@ var findArLists = function (req, res) {
     ArModel.find({ currentUserID }, function (err, lists) {
         if (lists && lists.length !== 0) {
             for (let i = 0; i < lists.length; i++) {
-                if (lists[i].admissionDetails.admissionDate == body.admissionDate) {
+                if (lists[i].patientInformation.arrivalDate == body.admissionDate) {
                     arLists.push(lists[i]);
                 }
             }
@@ -72,7 +72,7 @@ var addAccidentRegister = function (req, res) {
                     result = new ArModel(req.body)
                 }
                 result.save((err, doc, next) => {
-                    if (doc) {
+                    if (!err) {
 
                         if (doc.completed == false) {
                             let response = status.statusCode.arInitialEntrySuccess

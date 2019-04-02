@@ -29,101 +29,51 @@
             <td style="text-align: left; padding: 5px; width: 313px;font-size: 10px "><b>Hospital Name : </b>{{printData.hospitalDetails.hospitalName}}</td>
           </tr>
           <tr style="text-align: left; border: 2px solid black; border-collapse: collapse; ">
-            <td colspan="2" style="padding: 6px; color: #6f0b82; background-color: #f7f0f0;font-size: 10px"><b>ADMISSION DETAILS</b></td>
+            <td colspan="2" style="padding: 6px; color: #6f0b82; background-color: #f7f0f0;font-size: 10px"><b>PATIENT INFORMATION</b></td>
           </tr>
           <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>AR Number : </b>{{printData.arNumber}}</td>
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>OP Number :</b> {{printData.admissionDetails.opNumber}}</td>
+            <td  style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>AR Number : </b>{{printData.arNumber}}</td>
+            <td  style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Arrival Date & Time : </b>{{printData.patientInformation.arrivalDate}}
+            /{{printData.patientInformation.arrivalTime}}</td>
           </tr>
           <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>IP Number :</b> {{printData.admissionDetails.ipNumber}}</td>
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>MLC Number :</b> {{printData.admissionDetails.mlcNumber}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Name : </b>{{printData.patientInformation.name}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Age :</b> {{printData.patientInformation.age}}</td>
           </tr>
           <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Person Brought :</b> {{printData.admissionDetails.personBrought}}
-            </td>
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Admission Date & Time:</b>
-              {{printData.admissionDetails.admissionDate}}/{{printData.admissionDetails.admissionTime}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Gender :</b> {{printData.patientInformation.gender}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Occupation :</b> {{printData.patientInformation.occupation}}</td>
           </tr>
           <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Informed to the Police? :</b>
-              {{printData.admissionDetails.isIformedToPolice}}
-            </td>
-            <td *ngIf="printData.admissionDetails.toWhom" style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>To Whom:</b>{{printData.admissionDetails.toWhom}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>IdentyMark1 :</b> {{printData.patientInformation.identyMark1}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Location1 :</b> {{printData.patientInformation.location1}}</td>
           </tr>
           <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td colspan="2" style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px">
-              <b>Affidavit :</b> {{printData.admissionDetails.affidavit}}
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>IdentyMark2 :</b> {{printData.patientInformation.identyMark2}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Location2 :</b> {{printData.patientInformation.location2}}</td>
+          </tr>
+          <tr style="border: 2px solid black; border-collapse: collapse;">
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Address :</b> {{printData.patientInformation.doorNoStreet}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Phone Number :</b> {{printData.patientInformation.phoneNumber}}</td>
+          </tr>
+          <tr style="border: 2px solid black; border-collapse: collapse;">
+            <td colspan="2" style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Person Brought :</b> {{printData.patientInformation.personBrought}}
             </td>
           </tr>
           <tr style="text-align: left; border: 2px solid black; border-collapse: collapse; ">
-            <td colspan="2" style="padding: 6px; color: #6f0b82;background-color: #f7f0f0;font-size: 10px"><b>PATIENT DETAILS</b></td>
+            <td colspan="2" style="padding: 6px; color: #6f0b82;background-color: #f7f0f0;font-size: 10px"><b>MLC INFORMATION</b></td>
           </tr>
           <tr style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px">
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Name : </b>{{printData.patientDetails.name}}</td>
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Age : </b>{{printData.patientDetails.age}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Informed to the Police ? : </b>{{printData.mlcInformation.isInformedToPolice}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Police Officer Name : </b>{{printData.mlcInformation.toWhom}}</td>
           </tr>
           <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Gender :</b> {{printData.patientDetails.gender}}</td>
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Occupation :</b> {{printData.patientDetails.occupation}}</td>
+            <td colspan="2" style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Location :</b> {{printData.mlcInformation.location}}</td>
           </tr>
           <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Identity Mark 1 :</b> {{printData.patientDetails.identyMark1}}
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Needed Dying Declaration ? :</b> {{printData.mlcInformation.isNeededDyingDeclaration}}
             </td>
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Location 1 :</b> {{printData.patientDetails.location1}}</td>
-          </tr>
-          <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Identity Mark 2 : </b>{{printData.patientDetails.identyMark2}}</td>
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Location 2 :</b> {{printData.patientDetails.location2}}</td>
-          </tr>
-          <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Address : </b>{{printData.patientDetails.doorNoStreet}}</td>
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>City/ District :</b> {{printData.patientDetails.cityDistrict}}
-            </td>
-          </tr>
-          <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td colspan="2" style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Phone Number : </b>{{printData.patientDetails.phoneNumber}}
-            </td>
-          </tr>
-          <tr style="text-align: left; border: 2px solid black; border-collapse: collapse; ">
-            <td colspan="2" style="padding: 6px; color: #6f0b82;background-color: #f7f0f0;font-size: 10px"><b>DOCTOR DETAILS AND INITIAL
-                EXAMINATION</b></td>
-          </tr>
-          <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Doctor Name :</b> {{printData.doctorDetailsAndiInitialExamination.doctorName}}</td>
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>MCI Registration Number :</b>
-              {{printData.doctorDetailsAndiInitialExamination.doctorRegistrationNumber}}</td>
-          </tr>
-          <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Pulse :</b>
-            {{printData.doctorDetailsAndiInitialExamination.pulse}}</td>
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Blood Pressure : </b>
-            {{printData.doctorDetailsAndiInitialExamination.bloodPressureHigh}}/{{printData.doctorDetailsAndiInitialExamination.bloodPressureLow}}</td>
-          </tr>
-          <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Respiration Rate :</b>{{printData.doctorDetailsAndiInitialExamination.respirationRate}}</td>
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Oxygen Saturation : </b>{{printData.doctorDetailsAndiInitialExamination.oxygenSaturation}}</td>
-          </tr>
-          <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Pupillary Reaction :</b> {{printData.doctorDetailsAndiInitialExamination.pupillaryReaction}}</td>
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Nature of Injury :</b> {{printData.doctorDetailsAndiInitialExamination.injuryType}}
-            </td>
-          </tr>
-          <tr style="text-align: left; border: 2px solid black; border-collapse: collapse; ">
-            <td colspan="2" style="padding: 6px; color: #6f0b82;background-color: #f7f0f0;font-size: 10px"><b>ACCIDENT DETAILS</b></td>
-          </tr>
-          <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Location :</b> {{printData.accidentDetails.location}}</td>
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Landmark : </b>{{printData.accidentDetails.landmark}}</td>
-          </tr>
-          <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Accident Date & Time:</b>
-             {{printData.accidentDetails.accidentDate}}/{{printData.accidentDetails.accidentTime}}</td>
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Accident Type:</b> {{printData.accidentDetails.accidentType}} </td>
-          </tr>
-          <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td colspan="2" style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Doctor
-                Description:</b> {{printData.doctorDetailsAndiInitialExamination.doctorDescription}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Needed Statement ? :</b> {{printData.mlcInformation.isNeededStatement}}</td>
           </tr>
           <tr
             style="text-align: left; border: 2px solid black; border-bottom: 1px solid black; border-collapse: collapse; ">
@@ -131,16 +81,62 @@
                 DETAILS</b></td>
           </tr>
           <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td style="border:2px solid black; border-top: none; padding: 6px; padding: 5px;font-size: 10px; border-collapse:collapse; ">
-              <b>Patient Position : </b>{{printData.accidentDetails.patientPosition}}</td>
-            <td style="border:2px solid black; border-top: none; padding: 6px; padding: 5px;font-size: 10px; border-collapse:collapse;">
-              <b>Vechile Type :</b> {{printData.accidentDetails.vechileType}} </td>
-          </tr>
-          <tr style="border: 2px solid black; border-collapse: collapse;">
             <td colspan="2"
               style="border:2px solid black; border-top:none; padding: 6px; padding: 5px;font-size: 10px; border-collapse:collapse;">
-              <b>Patient Type : </b>{{printData.accidentDetails.patientType}}</td>
+              <b>Case Type : </b>{{printData.mlcInformation.caseType}}</td>
           </tr>
+          <tr style="border: 2px solid black; border-collapse: collapse;">
+            <td style="border:2px solid black; border-top: none; padding: 6px; padding: 5px;font-size: 10px; border-collapse:collapse; ">
+              <b>Patient Position : </b>{{printData.mlcInformation.patientPosition}}</td>
+            <td style="border:2px solid black; border-top: none; padding: 6px; padding: 5px;font-size: 10px; border-collapse:collapse;">
+              <b>Patient Type : </b>{{printData.mlcInformation.patientType}}</td>
+          </tr>
+          <tr style="border: 2px solid black; border-collapse: collapse;">
+            <td style="border:2px solid black; border-top:none; padding: 6px; padding: 5px;font-size: 10px; border-collapse:collapse;">
+              <b>Vechile Type :</b> {{printData.mlcInformation.vechileType}} </td>
+              <td style="border:2px solid black; border-top:none; padding: 6px; padding: 5px;font-size: 10px; border-collapse:collapse;">
+                <b>Vechile Number : </b>{{printData.mlcInformation.vechileNumber}}</td>
+          </tr>
+          <tr style="text-align: left; border: 2px solid black; border-collapse: collapse; ">
+            <td colspan="2" style="padding: 6px; color: #6f0b82;background-color: #f7f0f0;font-size: 10px"><b>EXAMINATION DETAILS</b></td>
+          </tr>
+          <tr style="border: 2px solid black; border-collapse: collapse;">
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Nature of Injury :</b> {{printData.examinationDetails.natureOfInjury}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Type of Injury :</b>
+              {{printData.examinationDetails.typeOfInjury}}</td>
+          </tr>
+          <tr style="border: 2px solid black; border-collapse: collapse;">
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Injured Part :</b>
+            {{printData.examinationDetails.injuredPartOfBody}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Heart Rate :</b>{{printData.examinationDetails.heartRate}}</td>
+          </tr>
+          <tr style="border: 2px solid black; border-collapse: collapse;">
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Conscious:</b>{{printData.examinationDetails.conscious}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Blood Pressure : </b>
+              {{printData.examinationDetails.bloodPressureHigh}}/{{printData.examinationDetails.bloodPressureLow}}</td>          </tr>
+          <tr style="border: 2px solid black; border-collapse: collapse;">
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Orientation :</b> {{printData.examinationDetails.orientation}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Description of Pupil :</b> {{printData.examinationDetails.descriptionOfPupil}}
+            </td>
+          </tr>
+          <tr style="border: 2px solid black; border-collapse: collapse;">
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Physician Opinion :</b> {{printData.examinationDetails.physicianOpinion}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>History :</b> {{printData.examinationDetails.history}}
+            </td>
+          </tr>
+          <tr style="border: 2px solid black; border-collapse: collapse;">
+            <td colspan="2" style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Treatment Plan :</b> {{printData.examinationDetails.treatmentPlan}}</td>
+            </td>
+          </tr>
+          <tr style="border: 2px solid black; border-collapse: collapse;">
+            <td colspan="2" style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Outcome :</b> {{printData.examinationDetails.outCome}}</td>
+            </td>
+          </tr> 
+          <tr style="border: 2px solid black; border-collapse: collapse;">
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Referral Institution :</b> {{printData.examinationDetails.referralInstitutionType}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 5px;font-size: 10px"><b>Reason for Referral :</b> {{printData.examinationDetails.reasonforReferral}}
+            </td>
+          </tr>           
         </tbody>
     
       </table>
