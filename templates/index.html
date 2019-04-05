@@ -16,6 +16,12 @@
                 ACCIDENT REGISTER FORM
               </b></td>
           </tr>
+          <tr style="text-align: left; border: 2px solid black; border-collapse: collapse; ">
+            <td colspan="2"
+              style="padding: 6px; color: #000000; background-color: #f7f0f0;font-size: 10px;text-align: center"><b>
+                {{printData.hospitalDetails.hospitalName}}
+              </b></td>
+          </tr>
           <tr>
             <td style="text-align: left; padding: 3px; width: 313px;font-size: 10px "><b>Hospital Id : </b>{{printData.hospitalDetails.hospitalId}}</td>
             <td style="text-align: left; padding: 3px; width: 313px;font-size: 10px"><b>Hospital Type :</b> {{printData.hospitalDetails.hospitalType}}</td>
@@ -34,7 +40,7 @@
           <tr style="border: 2px solid black; border-collapse: collapse;">
             <td  style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 10px"><b>AR Number : </b>{{printData.arNumber}}</td>
             <td  style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 10px"><b>Arrival Date & Time : </b>{{printData.patientInformation.arrivalDate}}
-            /{{printData.patientInformation.arrivalTime}}</td>
+           </td>
           </tr>
           <tr style="border: 2px solid black; border-collapse: collapse;">
             <td style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 10px"><b>Name : </b>{{printData.patientInformation.name}}</td>
