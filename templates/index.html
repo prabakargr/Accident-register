@@ -59,9 +59,16 @@
             <td style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 10px"><b>Address :</b> {{printData.patientInformation.doorNoStreet}}</td>
             <td style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 10px"><b>Phone Number :</b> {{printData.patientInformation.phoneNumber}}</td>
           </tr>
-          <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td colspan="2" style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 8px"><b>Person Brought :</b> {{printData.patientInformation.personBrought}}
-            </td>
+          <tr style="text-align: left; border: 2px solid black; border-collapse: collapse; ">
+            <td colspan="2" style="padding: 6px; color: #6f0b82;background-color: #f7f0f0;font-size: 10px"><b>DETAILS OF PERSON BROUGHT</b></td>
+          </tr>
+          <tr style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 10px">
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 10px"><b>Name : </b>{{printData.personBrought.name}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 10px"><b>Phone Number :</b>{{printData.personBrought.phoneNumber}}</td>
+          </tr>
+          <tr style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 10px">
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 10px"><b>Relation : </b>{{printData.personBrought.relation}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 8px"><b style="font-size:10px">Address :</b>{{printData.personBrought.address}}</td>
           </tr>
           <tr style="text-align: left; border: 2px solid black; border-collapse: collapse; ">
             <td colspan="2" style="padding: 6px; color: #6f0b82;background-color: #f7f0f0;font-size: 10px"><b>MLC INFORMATION</b></td>
@@ -123,12 +130,12 @@
             </td>
           </tr>
           <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 8px"><b>Physician Opinion :</b> {{printData.examinationDetails.physicianOpinion}}</td>
-            <td style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 8px"><b>History :</b> {{printData.examinationDetails.history}}
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 8px"><b style="font-size:10px">Physician Opinion :</b> {{printData.examinationDetails.physicianOpinion}}</td>
+            <td style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 8px"><b style="font-size:10px">History :</b> {{printData.examinationDetails.history}}
             </td>
           </tr>
           <tr style="border: 2px solid black; border-collapse: collapse;">
-            <td colspan="2" style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 8px"><b>Treatment Plan :</b> {{printData.examinationDetails.treatmentPlan}}</td>
+            <td colspan="2" style="border: 2px solid black; border-collapse: collapse; padding: 3px;font-size: 8px"><b style="font-size:10px">Treatment Plan :</b> {{printData.examinationDetails.treatmentPlan}}</td>
             </td>
           </tr>
           <tr style="border: 2px solid black; border-collapse: collapse;">

@@ -34,6 +34,12 @@ var arModel = new Schema({
         arrivalTime: String,
         personBrought: String
     },
+    personBrought:{
+        name:String,
+        phoneNumber:String,
+        relationship:String,
+        address:String
+    },
     mlcInformation: {
         isInformedToPolice: String,
         toWhom: String,
