@@ -27,8 +27,11 @@ var findArLists = function (req, res) {
 
     ArModel.find({ currentUserID }, function (err, lists) {
         if (lists && lists.length !== 0) {
-            for (let i = 0; i < lists.length; i++) {
-                if (lists[i].patientInformation.arrivalDate.slice(0,10) == body.admissionDate) {
+            for (let i = 0; i < lists.length; i++) { 
+                if (lists[i] 
+                    &&lists[i].patientInformation 
+                    &&lists[i].patientInformation.arrivalDate 
+                    &&lists[i].patientInformation.arrivalDate.slice(0,10) === body.admissionDate) {
                     arLists.push(lists[i]);
                 }
             }
