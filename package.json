@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
-
   },
   "author": "",
   "license": "ISC",
@@ -17,7 +16,6 @@
     "express": "^4.16.2",
     "handlebars": "^4.1.1",
     "html-pdf": "^2.2.0",
-    "jsdom": "^14.0.0",
     "jsonwebtoken": "^8.2.0",
     "lodash": "^4.17.11",
     "mongodb": "^3.0.3",
