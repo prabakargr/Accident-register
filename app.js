@@ -24,6 +24,8 @@ var config = require('./config');
 
 var app=express();
 
+var path = require("path")
+
 
 app.set('superSecret', config.secret);
 
@@ -35,9 +37,8 @@ app.use(function (req, res, next) {
 process.env.PWD = process.cwd();
 
 //html view
-
-var path = require("path");
-app.use(express.static(path.resolve(__dirname, 'templates')));
+app.use('/',express.static(path.resolve(__dirname, 'ionic')));
+app.use('/dash',express.static(path.resolve(__dirname, 'public')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
