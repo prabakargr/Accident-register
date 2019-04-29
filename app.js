@@ -10,7 +10,7 @@ var morgan = require('morgan');
 
 var cors=require('cors')
 
-var db=mongoose.connect("mongodb://test:testar1@ds133875.mlab.com:33875/accident_register")
+var db=mongoose.connect("mongodb://117.239.111.243:27017/Tara")
 
 var usersAdminRouting = require('./userAdmin/userAdmin.routings');
 

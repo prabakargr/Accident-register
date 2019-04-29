@@ -48,8 +48,10 @@ var arModel = new Schema({
         caseType: [],
         patientType: String,
         vechileType: String,
+        otherVechileType:String,
         vechileNumber: String,
         patientPosition: String,
+        otherPatientPosition:String,
         isNeededDyingDeclaration: String,
         isNeededStatement: String
     },

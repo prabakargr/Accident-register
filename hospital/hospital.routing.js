@@ -8,7 +8,7 @@ var tokenGenerate=require('../tokenValidate/tokenGenerate')
 
 var usersAdminRouting=express.Router();
 
-usersAdminRouting.route('/addHospital').post(tokenValidate.checkToken,hospitalController.addHospital);
+usersAdminRouting.route('/addHospital').post(hospitalController.addHospital);
 usersAdminRouting.route('/findHospitals').post(hospitalController.findHospitals);
 usersAdminRouting.route('/hospitalLogin').post(tokenGenerate.hospitalLogin);
 usersAdminRouting.route('/hospitalLists').post(tokenValidate.checkToken,hospitalController.findHospitalList);
