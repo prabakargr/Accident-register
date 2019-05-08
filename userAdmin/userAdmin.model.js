@@ -5,7 +5,15 @@ var Schema=mongoose.Schema;
 var userAdminModel=new Schema({
    
     username:String,
-    password:String
+    password:String,
+    hospitalId:String,
+    hospitalNumber:String,
+    district:String,
+    hospitalType:String,
+    hospitalDirectorate:String,
+    hospitalName:String,
+    role:String,
+    isActive:Boolean
 
 
 });

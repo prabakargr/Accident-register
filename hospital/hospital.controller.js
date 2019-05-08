@@ -1,5 +1,7 @@
 var hospitalModel=require('./hospital.model');
 
+var adminUserModel=require('../userAdmin/userAdmin.model')
+
 var express     = require('express');
 
 var app         = express();
@@ -15,15 +17,22 @@ var status=require('../statusResponse/status')
 app.set('superSecret', config.secret);
 
 var addHospital = function (req, res) {
-                var hospital = new hospitalModel(req.body);
-                hospital.save(function (err,result) {
+                var newHospital = new hospitalModel(req.body);
+                newHospital.save(function (err,hospital) {
                     if (err) {
                         res.send(err);
                     } else {
-                        let responce=status.statusCode.createSuccess
-                        responce.data=result
-                        res.json(responce)
-                        
+                        var newHospital=hospital._doc
+                        var adminUser=new adminUserModel(newHospital)
+                        adminUser.save(function(err,result){
+                            if (err) {
+                                res.send(err);
+                            }else{
+                                let responce=status.statusCode.createSuccess
+                                responce.data=result
+                                res.json(responce)
+                            }
+                        })
                     }
                 });
             }
