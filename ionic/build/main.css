@@ -26111,6 +26111,10 @@ page-landing .button {
   height: 1.6rem;
 }
 
+page-landing ion-footer .button {
+  height: 3.6rem;
+}
+
 page-login .loginLogo img {
   width: 148px !important;
 }
