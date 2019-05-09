@@ -12,7 +12,7 @@ const handlebar=require('handlebars')
 
 var fs = require('fs');
 var pdf = require('html-pdf');
-var options = { format: 'pdf' };
+var options = { format: 'A4' };
 const base64 = require('base64topdf');
 
 app.use(express.static(path.resolve(__dirname, 'templates')));
