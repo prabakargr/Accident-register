@@ -210,7 +210,6 @@ var ArCreatePage = /** @class */ (function () {
                     localdata = [data];
                 }
                 _this.storage.set('arLists', localdata).then(function (success) {
-                    console.log(_this.arLists);
                     if (data.completed == true) {
                         _this.alertCtrl.create({
                             subTitle: 'Stored in Offline',
@@ -567,7 +566,6 @@ var ProfilePage = /** @class */ (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.hospital = JSON.parse(localStorage.getItem('currentUserHospital')).userDetails;
-        console.log(this.hospital);
     }
     ProfilePage.prototype.ionViewDidLoad = function () {
     };
@@ -676,7 +674,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ShareProvider = /** @class */ (function () {
     function ShareProvider(http) {
         this.http = http;
-        console.log('Hello ShareProvider Provider');
     }
     ShareProvider.prototype.setUser = function (v) {
         this.user = v;
@@ -944,8 +941,8 @@ var NetworkProvider = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
     production: false,
-    baseUrl: "http://localhost:5000"
-    // baseUrl:"https://accident-register.herokuapp.com"
+    // baseUrl:"http://localhost:5000"
+    baseUrl: "https://accidentregister.herokuapp.com"
     // baseUrl:"http://13.234.52.55:9002"
 };
 //# sourceMappingURL=environment.js.map
@@ -1069,7 +1066,6 @@ var LandingPage = /** @class */ (function () {
                 this.editData = this.arLists[i];
             }
         }
-        console.log(this.editData);
         this.loader.dismiss();
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__ar_edit_ar_edit__["a" /* ArEditPage */], this.editData);
     };
@@ -1087,7 +1083,6 @@ var LandingPage = /** @class */ (function () {
             this.loader.present();
             this.dataService.postData(this.baseURL + this.findArUrl, data)
                 .subscribe(function (res) {
-                console.log(res);
                 _this.rows = [];
                 _this.arLists = res;
                 _this.alert(_this.arLists.status);
@@ -1105,7 +1100,6 @@ var LandingPage = /** @class */ (function () {
                         }
                     });
                 }
-                console.log(_this.rows);
                 _this.loader.dismiss();
             });
         }
@@ -1182,7 +1176,6 @@ var MenuPage = /** @class */ (function () {
     };
     MenuPage.prototype.ionViewDidLoad = function () {
         this.rootPage = __WEBPACK_IMPORTED_MODULE_2__landing_landing__["a" /* LandingPage */];
-        console.log('ionViewDidLoad MenuPage');
     };
     MenuPage.prototype.logout = function () {
         localStorage.removeItem('currentUserHospital');
@@ -1194,7 +1187,7 @@ var MenuPage = /** @class */ (function () {
     ], MenuPage.prototype, "nav", void 0);
     MenuPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-menu',template:/*ion-inline-start:"D:\IIT\IONIC\AR\src\pages\menu\menu.html"*/'<ion-menu [content]="content">\n\n  <ion-content>\n\n      <!-- <div class="logoDashboard" align="center">\n\n          <img src="./assets/imgs/logo.jpg" />\n\n      </div> -->\n\n      <ion-list>\n\n          <button  menuClose ion-item (click)="openPage(\'dashboard\')">\n\n            Homepage\n\n          </button>\n\n          <button  menuClose ion-item (click)="openPage(\'profile\')">\n\n              Profile\n\n            </button>\n\n          <button  menuClose ion-item (click)="logout()">\n\n              Logout\n\n            </button>\n\n      </ion-list>\n\n  </ion-content>\n\n  <ion-footer>\n\n    <br>\n\n    <div class="item item-avatar item-text-wrap" text-center>\n\n      <img style="max-height:60px" src="/assets/imgs/RGBlogo.png" class="grow">\n\n      <p class="rcolor">Designed & Developed By</p>\n\n      <p class="rcolor"> RBG Labs, IIT Madras</p>\n\n      <hr>\n\n  </div>\n\n  </ion-footer>\n\n</ion-menu>\n\n\n\n\n\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"D:\IIT\IONIC\AR\src\pages\menu\menu.html"*/,
+            selector: 'page-menu',template:/*ion-inline-start:"D:\IIT\IONIC\AR\src\pages\menu\menu.html"*/'<ion-menu [content]="content">\n\n  <ion-content>\n\n      <!-- <div class="logoDashboard" align="center">\n\n          <img src="./assets/imgs/logo.jpg" />\n\n      </div> -->\n\n      <ion-list>\n\n          <button  menuClose ion-item (click)="openPage(\'dashboard\')">\n\n            Homepage\n\n          </button>\n\n          <button  menuClose ion-item (click)="openPage(\'profile\')">\n\n              Profile\n\n            </button>\n\n          <button  menuClose ion-item (click)="logout()">\n\n              Logout\n\n            </button>\n\n      </ion-list>\n\n  </ion-content>\n\n  <ion-footer>\n\n    <br>\n\n    <div class="item item-avatar item-text-wrap" text-center>\n\n      <img style="max-height:60px" src="./assets/imgs/RGBlogo.png" class="grow">\n\n      <p class="rcolor">Designed & Developed By</p>\n\n      <p class="rcolor"> RBG Labs, IIT Madras</p>\n\n      <hr>\n\n  </div>\n\n  </ion-footer>\n\n</ion-menu>\n\n\n\n\n\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"D:\IIT\IONIC\AR\src\pages\menu\menu.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
@@ -1270,7 +1263,6 @@ var MyApp = /** @class */ (function () {
                 _this.localArListData = data;
                 if (_this.localArListData != null && _this.localArListData != undefined) {
                     _this.dataService.postData(_this.baseUrl + _this.arCreateUrl, _this.localArListData).subscribe(function (res) {
-                        console.log(res);
                         if (res['code'] == 200) {
                             _this.storage.remove('arLists');
                         }
@@ -1480,7 +1472,6 @@ var LoginPage = /** @class */ (function () {
         this.nonGovt = [];
         this.loader.present();
         this.dataService.postData(this.baseURL + this.findHospitalUrl, data).subscribe(function (res) {
-            console.log(res);
             _this.loader.dismiss();
             var hospitals = res;
             if (hospitals['code'] == 200 && hospitals['data'].length != 0) {
