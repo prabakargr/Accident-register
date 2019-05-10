@@ -18,7 +18,9 @@ var options = { format: 'A4',
                  } ,
                  "footer": {
                     "height": "20mm"
-                 }};
+                 },
+                 "border": "1mm"
+                };
 const base64 = require('base64topdf');
 
 app.use(express.static(path.resolve(__dirname, 'templates')));
