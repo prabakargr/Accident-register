@@ -20,8 +20,8 @@ var options = { format: 'A4',
                     "height": "20mm"
                  },
                  "border": {
-                     "top":"1mm",
-                     "bottom":"1mm"
+                     "top":"1px",
+                     "bottom":"1px"
                  }
                 };
 const base64 = require('base64topdf');
