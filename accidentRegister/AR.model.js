@@ -56,7 +56,7 @@ var arModel = new Schema({
         isNeededStatement: String
     },
     examinationDetails: {
-        typeOfInjury: String,
+        typeOfInjury: [],
         otherTypeOfInjury: String,
         natureOfInjury: String,
         injuredPartOfBody: [],
