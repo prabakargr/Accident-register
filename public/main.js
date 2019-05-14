@@ -1274,7 +1274,6 @@ var ShareServiceService = /** @class */ (function () {
     }
     ShareServiceService.prototype.setArData = function (v) {
         this.arData = v;
-        console.log(this.arData);
     };
     ShareServiceService.prototype.getArData = function () {
         return this.arData;
@@ -1307,9 +1306,9 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 var environment = {
     production: false,
-    baseUrl: "https://accidentregister.herokuapp.com"
+    // baseUrl:"https://accidentregister.herokuapp.com"
     // baseUrl:"http://localhost:5000"
-    // baseUrl:"http://13.234.52.55:9002"
+    baseUrl: "http://13.234.52.55:9002"
 };
 /*
  * For easier debugging in development mode, you can import the following file

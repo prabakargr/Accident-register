@@ -19,10 +19,6 @@ var options = { format: 'A4',
                  "footer": {
                     "height": "20mm"
                  },
-                 "border": {
-                     "top":"1px",
-                     "bottom":"1px"
-                 }
                 };
 const base64 = require('base64topdf');
 

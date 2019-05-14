@@ -942,8 +942,8 @@ var NetworkProvider = /** @class */ (function () {
 var environment = {
     production: false,
     // baseUrl:"http://localhost:5000"
-    baseUrl: "https://accidentregister.herokuapp.com"
-    // baseUrl:"http://13.234.52.55:9002"
+    // baseUrl:"https://accidentregister.herokuapp.com"
+    baseUrl: "http://13.234.52.55:9002"
 };
 //# sourceMappingURL=environment.js.map
 
