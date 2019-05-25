@@ -38,8 +38,8 @@ app.use(function (req, res, next) {
 process.env.PWD = process.cwd();
 
 //html view
-app.use('/AR',express.static(path.resolve(__dirname, 'ionic')));
-app.use('/dashboard',express.static(path.resolve(__dirname, 'public')));
+// app.use('/AR',express.static(path.resolve(__dirname, 'ionic')));
+// app.use('/dashboard',express.static(path.resolve(__dirname, 'public')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
